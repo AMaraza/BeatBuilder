@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ukb6760lephk"]
+
+[ext_resource type="Script" uid="uid://caqbqxgir5vsp" path="res://scripts/beat.gd" id="1_28w56"]
+[ext_resource type="AudioStream" uid="uid://bt3pi37cohih" path="res://sounds/metronome.wav" id="1_jc3xf"]
+[ext_resource type="Script" uid="uid://dl8fhbh8ingpk" path="res://addons/rhythm_notifier/rhythm_notifier.gd" id="3_fpijs"]
+[ext_resource type="AudioStream" uid="uid://drgw5ji4d0tjf" path="res://sounds/hurry_up.mp3" id="4_8tqnr"]
+
+[node name="Beat" type="Node2D"]
+script = ExtResource("1_28w56")
+
+[node name="Metronome" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_jc3xf")
+
+[node name="RhythmNotifier" type="Node" parent="." node_paths=PackedStringArray("audio_stream_player")]
+script = ExtResource("3_fpijs")
+bpm = 77.5
+beat_length = 0.774194
+audio_stream_player = NodePath("../Song")
+metadata/_custom_type_script = "uid://dl8fhbh8ingpk"
+
+[node name="Song" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8tqnr")
+volume_db = -14.991
+autoplay = true
+
+[connection signal="beat" from="RhythmNotifier" to="." method="_on_rhythm_notifier_beat"]
