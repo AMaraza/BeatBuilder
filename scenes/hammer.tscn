@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6ndo6giorq0j"]
+[gd_scene load_steps=8 format=3 uid="uid://c6ndo6giorq0j"]
 
 [ext_resource type="Script" uid="uid://bnkmv6kgya22r" path="res://scripts/hammer.gd" id="1_puv5m"]
 [ext_resource type="Texture2D" uid="uid://dnsiybmn800r7" path="res://icon.svg" id="1_s5ltg"]
+[ext_resource type="AudioStream" uid="uid://bgpcjm64kbfml" path="res://sounds/swipe.wav" id="3_01xny"]
+[ext_resource type="AudioStream" uid="uid://d3dfagylo7t7l" path="res://sounds/whack.wav" id="4_7cboi"]
 
 [sub_resource type="Animation" id="Animation_puv5m"]
 length = 0.001
@@ -53,3 +55,9 @@ texture = ExtResource("1_s5ltg")
 libraries = {
 &"": SubResource("AnimationLibrary_puv5m")
 }
+
+[node name="Swipe" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_01xny")
+
+[node name="Whack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7cboi")
